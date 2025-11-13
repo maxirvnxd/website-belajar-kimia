@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI-RA Chemistry Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <img src="images/welcome-to-mi-ra.png" alt="Welcome to MI-RA" class="login-logo">
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="success-animation" class="hidden">
+        <img src="images/selamat-datang.gif" alt="Selamat Datang">
+    </div>
+
+    <div id="app-page" class="page hidden">
+        
+        <button id="menu-toggle" class="menu-toggle">
+            &#9776; </button>
+
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+            </div>
+            <ul>
+                <li><a href="#" id="nav-home">Home</a></li>
+                <li><a href="#" id="nav-notes">Chemistry Notes</a></li>
+                <li><a href="#" id="nav-fun-fact">Fun-Fact!</a></li>
+                <li><a href="#" id="nav-glossary">Istilah Kimia</a></li>
+                <li><a href="#" id="nav-logout">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main id="main-content" class="main-content">
+            
+            <div id="home-view" class="view">
+                <h2>Selamat Datang di Mi-Ra!</h2>
+                <div class="content-box">
+                    <h3>Website Belajar Kimia:</h3>
+                    <ul class="link-list">
+                        <li><a href="https://phet.colorado.edu/in/simulations/filter?subjects=chemistry&type=html" target="_blank" class="btn-link">🔬 PhET</a></li>
+                        <li><a href="https://chem.libretexts.org/" target="_blank" class="btn-link">📚 LibreTexts</a></li>
+                        <li><a href="https://www.acs.org/education/resources.html" target="_blank" class="btn-link">💡 ACS Chemistry for Life</a></li>
+                        </ul>
+                </div>
+                <div class="home-intro">
+                    <p>Selamat datang di Mi-Ra!</p>
+                    <p>Tempat di mana dunia kimia dan wibu berpadu jadi satu ruang belajar yang seru dan interaktif.</p>
+                    <p>Kami percaya, jadi kimiawan dan jadi wibu punya kesamaan:
+                    keduanya sama-sama suka mencari tahu hal baru, berpikir kreatif, dan terus berevolusi.</p>
+                </div>
+                <img src="images/paimon-peeking.png" alt="Paimon Peeking" class="home-peeking-image">
+            </div>
+
+            <div id="notes-view" class="view hidden">
+                <h2>Chemistry Notes</h2>
+                <div class="notes-container">
+                    <div class="notes-image">
+                        <img src="images/catatan-paimon.png" alt="Paimon">
+                    </div>
+                    <div class="notes-list">
+                        <div class="content-box">
+                            <h4>Kimia Organik</h4>
+                            <a href="#" id="link-grignard" class="note-link">Reaksi Grignard</a>
+                            <h4>Kimia Dasar</h4>
+                            <a href="#" id="link-ph" class="note-link">Skala pH Interaktif</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="grignard-view" class="view hidden">
+                <h2>Reaksi Grignard</h2>
+                <button class="btn-back" data-target="notes-view">&larr; Kembali ke Notes</button>
+                <div class="grignard-images">
+                    <img src="images/reaksi-grignard-1.jpg" alt="Reaksi Grignard 1">
+                    <img src="images/reaksi-grignard-2.jpg" alt="Reaksi Grignard 2">
+                </div>
+                <div class="grignard-content">
+                    <h3>🧪 1. Pengertian Reaksi Grignard</h3>
+                    <p>Reaksi Grignard adalah reaksi yang melibatkan senyawa Grignard, yaitu senyawa organologam dengan rumus umum:</p>
+                    <p><code>R–Mg–X</code></p>
+                    <p>dengan:</p>
+                    <ul>
+                        <li><b>R</b> = gugus alkil atau aril (misal: CH₃–, C₂H₅–, C₆H₅–),</li>
+                        <li><b>X</b> = halogen (Cl, Br, atau I),</li>
+                        <li><b>Mg</b> = logam magnesium.</li>
+                    </ul>
+                    <p>Senyawa ini disebut reaktan Grignard dan ditemukan oleh Victor Grignard (1900) yang mendapatkan Hadiah Nobel Kimia (1912).</p>
+                    
+                    <h3>⚙️ 2. Prinsip Dasar dan Pembuatan Senyawa Grignard</h3>
+                    <p>Senyawa Grignard disintesis dengan mereaksikan alkil atau aril halida dengan logam magnesium dalam pelarut eter anhidrat (etanol kering), misalnya dietil eter atau tetrahidrofuran (THF).</p>
+                    <p><b>Reaksi pembentukan:</b></p>
+                    <p><code>R–X + Mg → (Et₂O atau THF anhidrat) → R–Mg–X</code></p>
+                    <p><b>Contoh:</b></p>
+                    <p><code>CH₃–Br + Mg → (Et₂O) → CH₃–Mg–Br</code></p>
+                    <p>👉 Hasil: Metilmagnesium bromida (CH₃MgBr)</p>
+                    <p><b>⚠️ Catatan penting:</b></p>
+                    <ul>
+                        <li>Reaksi harus dilakukan tanpa air karena senyawa Grignard sangat reaktif terhadap air.</li>
+                        <li>Air, alkohol, atau CO₂ dapat merusak senyawa Grignard.</li>
+                    </ul>
+
+                    <h3>⚛️ 3. Karakteristik Reaktan Grignard</h3>
+                    <p>Senyawa Grignard bertindak sebagai nukleofil kuat dan basa kuat karena atom karbonnya bermuatan parsial negatif (C⁻δ) yang dapat menyerang atom bermuatan positif (elektrofil), seperti karbon pada gugus karbonil. Struktur ikatan bersifat kovalen polar, karena perbedaan keelektronegatifan antara karbon dan magnesium:</p>
+                    <p><code>R–<sup>δ⁻</sup> – Mg–<sup>δ⁺</sup> – X</code></p>
+
+                    <h3>🔄 4. Mekanisme Umum Reaksi Grignard</h3>
+                    <p>Mekanismenya dapat dijelaskan dalam dua tahap utama:</p>
+                    <p><b>Tahap 1: Pembentukan Senyawa Grignard</b></p>
+                    <p>Reaksi antara alkil halida dan logam magnesium dalam pelarut eter menghasilkan R–Mg–X (reaksi radikal). Magnesium menyumbangkan elektron → membentuk radikal R• dan MgX•. Radikal tersebut bergabung membentuk R–Mg–X.</p>
+                    <p><b>Tahap 2: Reaksi Grignard dengan Elektrofíl (misal: senyawa karbonil)</b></p>
+                    <p>Contoh: Reaksi dengan aldehid atau keton</p>
+                    <p><code>R'–Mg–X + R₂C=O → R₂C(OMgX)R'</code></p>
+                    <p>Produk antara ini disebut alkoksida magnesium. Kemudian dilakukan hidrolisis (penambahan air atau asam encer):</p>
+                    <p><code>R₂C(OMgX)R' + H₂O → R₂C(OH)R' + Mg(OH)X</code></p>
+                    <p>→ Produk akhirnya adalah alkohol.</p>
+
+                    <h3>🧩 5. Jenis-Jenis Reaksi Grignard Berdasarkan Elektrofíl</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Elektrofíl yang Bereaksi</th>
+                                <th>Produk Utama</th>
+                                <th>Contoh Reaksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Formaldehid (HCHO)</td>
+                                <td>Alkohol primer</td>
+                                <td><code>CH₃MgBr + HCHO → CH₃CH₂OH</code></td>
+                            </tr>
+                            <tr>
+                                <td>Aldehid lain (RCHO)</td>
+                                <td>Alkohol sekunder</td>
+                                <td><code>CH₃MgBr + C₂H₅CHO → C₂H₅CH(OH)CH₃</code></td>
+                            </tr>
+                            <tr>
+                                <td>Keton (R₂CO)</td>
+                                <td>Alkohol tersier</td>
+                                <td><code>CH₃MgBr + CH₃COCH₃ → (CH₃)₃COH</code></td>
+                            </tr>
+                            <tr>
+                                <td>CO₂ (gas kering)</td>
+                                <td>Asam karboksilat</td>
+                                <td><code>CH₃MgBr + CO₂ → CH₃COOMgBr → CH₃COOH</code></td>
+                            </tr>
+                            <tr>
+                                <td>Ester (RCOOR')</td>
+                                <td>Alkohol tersier</td>
+                                <td><code>2CH₃MgBr + CH₃COOCH₃ → (CH₃)₃COH</code></td>
+                            </tr>
+                            <tr>
+                                <td>Epoksida</td>
+                                <td>Alkohol dengan rantai lebih panjang</td>
+                                <td><code>CH₃MgBr + (CH₂CH₂O) → CH₃CH₂CH₂OMgBr → CH₃CH₂CH₂OH</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>⚗️ 6. Contoh Mekanisme Lengkap: Reaksi Grignard dengan Keton</h3>
+                    <p><b>Reaksi:</b></p>
+                    <p><code>CH₃MgBr + CH₃COCH₃ → (CH₃)₃COH</code></p>
+                    <p><b>Mekanisme:</b></p>
+                    <ol>
+                        <li><b>Serangan Nukleofilik:</b> Karbon bermuatan negatif (dari CH₃MgBr) menyerang karbon karbonil (C=O) dari aseton (CH₃COCH₃).
+                            <p><code>CH₃⁻ + CH₃COCH₃ → CH₃C(OMgBr)(CH₃)₂</code></p>
+                            <p>(Terbentuk senyawa alkoksida magnesium)</p>
+                        </li>
+                        <li><b>Hidrolisis:</b> Tambahkan air atau asam encer:
+                            <p><code>CH₃C(OMgBr)(CH₃)₂ + H₂O → (CH₃)₃COH + Mg(OH)Br</code></p>
+                            <p>Produk akhir: tert-butanol</p>
+                        </li>
+                    </ol>
+
+                    <h3>💡 7. Aplikasi Reaksi Grignard</h3>
+                    <ul>
+                        <li>Sintesis alkohol primer, sekunder, dan tersier.</li>
+                        <li>Pembuatan asam karboksilat dari CO₂.</li>
+                        <li>Pembuatan hidrokarbon (dengan air atau asam).</li>
+                        <li>Pembuatan senyawa kompleks organologam dalam sintesis obat dan pestisida.</li>
+                        <li>Langkah kunci dalam sintesis organik industri, seperti pembuatan vitamin, parfum, dan farmasi.</li>
+                    </ul>
+
+                    <h3>⚠️ 8. Keterbatasan Reaksi Grignard</h3>
+                    <p>Reaksi ini tidak bisa dilakukan jika substrat atau pelarut mengandung gugus fungsional yang reaktif terhadap basa kuat, seperti:</p>
+                    <ul>
+                        <li>–OH (alkohol)</li>
+                        <li>–NH₂ (amina)</li>
+                        <li>–SH (tiol)</li>
+                        <li>–COOH (asam karboksilat)</li>
+                        <li>–C≡CH (alkuna terminal)</li>
+                    </ul>
+                    <p>Karena gugus-gugus tersebut akan bereaksi lebih dulu dengan reagen Grignard dan menghancurkannya.</p>
+
+                    <h3>📘 9. Kesimpulan</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspek</th>
+                                <th>Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reagen utama</td>
+                                <td>Senyawa organomagnesium (R–Mg–X)</td>
+                            </tr>
+                            <tr>
+                                <td>Pelarut</td>
+                                <td>Et₂O atau THF (anhidrat)</td>
+                            </tr>
+                            <tr>
+                                <td>Sifat</td>
+                                <td>Nukleofil dan basa kuat</td>
+                            </tr>
+                            <tr>
+                                <td>Produk umum</td>
+                                <td>Alkohol atau asam karboksilat</td>
+                            </tr>
+                            <tr>
+                                <td>Aplikasi</td>
+                                <td>Sintesis organik, farmasi, bahan kimia industri</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="ph-view" class="view hidden">
+                <h2>Skala pH Interaktif</h2>
+                <button class="btn-back" data-target="notes-view">&larr; Kembali ke Notes</button>
+                <div id="ph-scale-container" class="ph-scale-container">
+                    </div>
+            </div>
+            
+            <div id="fun-fact-list-view" class="view hidden">
+                <h2>Fun Fact Kimia!</h2>
+                <p>Klik salah satu fakta di bawah untuk membacanya lebih lanjut.</p>
+                <div id="fun-fact-grid" class="fun-fact-grid"></div>
+            </div>
+
+            <div id="fun-fact-detail-view" class="view hidden">
+                <button class="btn-back" data-target="fun-fact-list-view">&larr; Kembali ke Daftar Fun Fact</button>
+                <div id="fun-fact-detail-header" class="fun-fact-detail-header"></div>
+                <div id="fun-fact-detail-content" class="fun-fact-detail-content"></div>
+            </div>
+
+            <div id="glossary-view" class="view hidden">
+                <h2>Daftar Istilah Kimia</h2>
+                <p>Daftar Istilah Kimia yang Perlu Kamu Ketahui</p>
+                
+                <div class="table-container">
+                    <table class="glossary-table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Istilah (Indonesia/Inggris)</th>
+                                <th>Arti</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="category-header"><td colspan="3">🏛️ Kategori 1: Konsep Dasar & Umum</td></tr>
+                            <tr><td>1.</td><td>Atom (Atom)</td><td>Unit terkecil dari suatu unsur yang masih mempertahankan sifat-sifat unsur tersebut.</td></tr>
+                            <tr><td>2.</td><td>Molekul (Molecule)</td><td>Gabungan dari dua atau lebih atom yang terikat secara kimia.</td></tr>
+                            <tr><td>3.</td><td>Unsur (Element)</td><td>Zat murni yang tidak dapat diuraikan lagi menjadi zat yang lebih sederhana melalui reaksi kimia.</td></tr>
+                            <tr><td>4.</td><td>Senyawa (Compound)</td><td>Zat murni yang terbentuk dari dua atau lebih unsur berbeda yang terikat secara kimia dengan perbandingan tetap.</td></tr>
+                            <tr><td>5.</td><td>Campuran (Mixture)</td><td>Gabungan dua atau lebih zat di mana masing-masing zat mempertahankan identitas kimianya (dapat berupa homogen atau heterogen).</td></tr>
+                            <tr><td>6.</td><td>Ikatan Kimia (Chemical Bond)</td><td>Gaya tarik-menarik yang menahan atom-atom bersama-sama dalam molekul atau senyawa.</td></tr>
+                            <tr><td>7.</td><td>Ikatan Ionik (Ionic Bond)</td><td>Ikatan yang terbentuk akibat transfer elektron dari satu atom (logam) ke atom lain (non-logam), membentuk ion positif dan negatif.</td></tr>
+                            <tr><td>8.</td><td>Ikatan Kovalen (Covalent Bond)</td><td>Ikatan yang terbentuk dari pemakaian bersama pasangan elektron antara dua atom (biasanya non-logam).</td></tr>
+                            <tr><td>9.</td><td>Reaksi Kimia (Chemical Reaction)</td><td>Proses yang mengubah satu set zat kimia (reaktan) menjadi set zat kimia lain (produk).</td></tr>
+                            <tr><td>10.</td><td>Reaktan (Reactant)</td><td>Zat awal yang terlibat dalam reaksi kimia.</td></tr>
+                            <tr><td>11.</td><td>Produk (Product)</td><td>Zat baru yang dihasilkan dari reaksi kimia.</td></tr>
+                            <tr><td>12.</td><td>Mol (Mole)</td><td>Satuan SI untuk jumlah zat, setara dengan 6.022 &times; 10<sup>23</sup> partikel (Nomor Avogadro).</td></tr>
+                            <tr><td>13.</td><td>Massa Molar (Molar Mass)</td><td>Massa (dalam gram) dari satu mol zat.</td></tr>
+                            <tr><td>14.</td><td>Larutan (Solution)</td><td>Campuran homogen di mana satu zat (zat terlarut) terlarut dalam zat lain (pelarut).</td></tr>
+                            <tr><td>15.</td><td>Pelarut (Solvent)</td><td>Komponen larutan yang jumlahnya lebih banyak dan melarutkan komponen lain.</td></tr>
+                            <tr><td>16.</td><td>Zat Terlarut (Solute)</td><td>Komponen larutan yang jumlahnya lebih sedikit dan terlarut dalam pelarut.</td></tr>
+                            <tr><td>17.</td><td>Konsentrasi (Concentration)</td><td>Jumlah zat terlarut dalam sejumlah pelarut atau larutan (misal: Molaritas, Molalitas).</td></tr>
+                            <tr><td>18.</td><td>Molaritas (Molarity, <i>M</i>)</td><td>Satuan konsentrasi yang didefinisikan sebagai jumlah mol zat terlarut per liter larutan.</td></tr>
+
+                            <tr class="category-header"><td colspan="3">🌡️ Kategori 2: Kimia Fisik & Termodinamika</td></tr>
+                            <tr><td>19.</td><td>Fasa (Phase)</td><td>Wujud materi yang seragam secara fisik dan kimia (misal: padat, cair, gas).</td></tr>
+                            <tr><td>20.</td><td>Termodinamika (Thermodynamics)</td><td>Studi tentang hubungan antara panas, kerja, suhu, dan energi.</td></tr>
+                            <tr><td>21.</td><td>Entalpi (Enthalpy, <i>H</i>)</td><td>Ukuran total energi panas dalam suatu sistem pada tekanan konstan. Perubahan entalpi (&Delta;<i>H</i>) menunjukkan panas reaksi.</td></tr>
+                            <tr><td>22.</td><td>Entropi (Entropy, <i>S</i>)</td><td>Ukuran ketidakteraturan atau keacakan dalam suatu sistem.</td></tr>
+                            <tr><td>23.</td><td>Energi Bebas Gibbs (Gibbs Free Energy, <i>G</i>)</td><td>Fungsi termodinamika yang digunakan untuk menentukan spontanitas suatu reaksi (<i>&Delta;G</i> = &Delta;<i>H</i> - <i>T</i>&Delta;<i>S</i>).</td></tr>
+                            <tr><td>24.</td><td>Reaksi Eksotermik (Exothermic Reaction)</td><td>Reaksi kimia yang melepaskan energi ke lingkungan (biasanya dalam bentuk panas, &Delta;<i>H</i> negatif).</td></tr>
+                            <tr><td>25.</td><td>Reaksi Endotermik (Endothermic Reaction)</td><td>Reaksi kimia yang menyerap energi dari lingkungan (&Delta;<i>H</i> positif).</td></tr>
+                            <tr><td>26.</td><td>Kinetika Kimia (Chemical Kinetics)</td><td>Studi tentang laju (kecepatan) reaksi kimia dan mekanisme yang melandasinya.</td></tr>
+                            <tr><td>27.</td><td>Laju Reaksi (Reaction Rate)</td><td>Perubahan konsentrasi reaktan atau produk per satuan waktu.</td></tr>
+                            <tr><td>28.</td><td>Energi Aktivasi (Activation Energy, <i>E</i><sub>a</sub>)</td><td>Energi minimum yang diperlukan agar reaktan dapat memulai reaksi kimia.</td></tr>
+                            <tr><td>29.</td><td>Katalis (Catalyst)</td><td>Zat yang mempercepat laju reaksi tanpa ikut terkonsumsi dalam reaksi tersebut, biasanya dengan menurunkan energi aktivasi.</td></tr>
+                            <tr><td>30.</td><td>Kesetimbangan Kimia (Chemical Equilibrium)</td><td>Keadaan dalam reaksi reversibel di mana laju reaksi maju sama dengan laju reaksi balik, sehingga konsentrasi reaktan dan produk konstan.</td></tr>
+                            <tr><td>31.</td><td>Prinsip Le Chatelier (Le Chatelier's Principle)</td><td>Jika suatu sistem dalam kesetimbangan diganggu (oleh perubahan konsentrasi, suhu, atau tekanan), sistem akan bergeser untuk melawan gangguan tersebut.</td></tr>
+                            <tr><td>32.</td><td>Elektrokimia (Electrochemistry)</td><td>Studi tentang hubungan antara reaksi kimia dan energi listrik.</td></tr>
+                            <tr><td>33.</td><td>Sel Volta (Voltaic Cell)</td><td>Sel elektrokimia yang menghasilkan energi listrik dari reaksi redoks spontan.</td></tr>
+                            <tr><td>34.</td><td>Sel Elektrolisis (Electrolytic Cell)</td><td>Sel elektrokimia yang menggunakan energi listrik untuk menjalankan reaksi redoks non-spontan.</td></tr>
+                            <tr><td>35.</td><td>pH (pH)</td><td>Ukuran keasaman atau kebasaan suatu larutan, didefinisikan sebagai logaritma negatif dari konsentrasi ion hidrogen (pH = -log[H<sup>+</sup>]).</td></tr>
+
+                            <tr class="category-header"><td colspan="3">🔬 Kategori 3: Kimia Anorganik & Struktur Atom</td></tr>
+                            <tr><td>36.</td><td>Tabel Periodik (Periodic Table)</td><td>Tampilan tabel unsur-unsur kimia, diatur berdasarkan nomor atom, konfigurasi elektron, dan sifat kimia.</td></tr>
+                            <tr><td>37.</td><td>Bilangan Oksidasi (Oxidation State)</td><td>Angka yang menunjukkan jumlah elektron yang "dikuasai" atau "dilepaskan" oleh atom dalam senyawa.</td></tr>
+                            <tr><td>38.</td><td>Oksidasi (Oxidation)</td><td>Proses kehilangan elektron, yang mengakibatkan peningkatan bilangan oksidasi.</td></tr>
+                            <tr><td>39.</td><td>Reduksi (Reduction)</td><td>Proses penangkapan elektron, yang mengakibatkan penurunan bilangan oksidasi.</td></tr>
+                            <tr><td>40.</td><td>Redoks (Redox)</td><td>Singkatan dari reaksi Reduksi-Oksidasi, di mana terjadi transfer elektron antar spesies kimia.</td></tr>
+                            <tr><td>41.</td><td>Elektronegativitas (Electronegativity)</td><td>Kecenderungan suatu atom untuk menarik elektron dalam ikatan kimia.</td></tr>
+                            <tr><td>42.</td><td>Energi Ionisasi (Ionization Energy)</td><td>Energi yang diperlukan untuk melepaskan satu elektron dari atom gas netral.</td></tr>
+                            <tr><td>43.</td><td>Afinitas Elektron (Electron Affinity)</td><td>Energi yang dilepaskan ketika satu elektron ditambahkan ke atom gas netral.</td></tr>
+                            <tr><td>44.</td><td>Logam Transisi (Transition Metal)</td><td>Unsur-unsur di blok-d tabel periodik, dikenal karena kemampuannya membentuk senyawa berwarna dan memiliki banyak bilangan oksidasi.</td></tr>
+                            <tr><td>45.</td><td>Senyawa Koordinasi (Coordination Compound)</td><td>Senyawa yang terdiri dari ion logam pusat (atom pusat) yang terikat pada molekul atau ion di sekitarnya yang disebut ligan.</td></tr>
+                            <tr><td>46.</td><td>Ligan (Ligand)</td><td>Molekul atau ion yang mengikat atom logam pusat melalui ikatan kovalen koordinat.</td></tr>
+                            <tr><td>47.</td><td>Asam (Acid)</td><td>Zat yang dapat mendonorkan proton (H<sup>+</sup>) (Brønsted-Lowry) atau menerima pasangan elektron (Lewis).</td></tr>
+                            <tr><td>48.</td><td>Basa (Base)</td><td>Zat yang dapat menerima proton (H<sup>+</sup>) (Brønsted-Lowry) atau mendonorkan pasangan elektron (Lewis).</td></tr>
+                            <tr><td>49.</td><td>Larutan Penyangga (Buffer Solution)</td><td>Larutan yang dapat menahan perubahan pH secara signifikan ketika sejumlah kecil asam atau basa ditambahkan.</td></tr>
+                            <tr><td>50.</td><td>Stokiometri (Stoichiometry)</td><td>Perhitungan kuantitatif hubungan antara reaktan dan produk dalam reaksi kimia.</td></tr>
+
+                            <tr class="category-header"><td colspan="3">🧪 Kategori 4: Kimia Organik</td></tr>
+                            <tr><td>51.</td><td>Kimia Organik (Organic Chemistry)</td><td>Studi tentang struktur, sifat, komposisi, reaksi, dan sintesis senyawa yang mengandung karbon.</td></tr>
+                            <tr><td>52.</td><td>Hidrokarbon (Hydrocarbon)</td><td>Senyawa organik yang hanya terdiri dari atom karbon dan hidrogen.</td></tr>
+                            <tr><td>53.</td><td>Alkana (Alkane)</td><td>Hidrokarbon jenuh (ikatan tunggal) dengan rumus umum C<sub>n</sub>H<sub>2n+2</sub>.</td></tr>
+                            <tr><td>54.</td><td>Alkena (Alkene)</td><td>Hidrokarbon tak jenuh yang mengandung setidaknya satu ikatan rangkap dua C=C.</td></tr>
+                            <tr><td>55.</td><td>Alkuna (Alkyne)</td><td>Hidrokarbon tak jenuh yang mengandung setidaknya satu ikatan rangkap tiga C&equiv;C.</td></tr>
+                            <tr><td>56.</td><td>Senyawa Aromatik (Aromatic Compound)</td><td>Senyawa siklik, planar, dengan sistem elektron pi terkonjugasi (misal: Benzena).</td></tr>
+                            <tr><td>57.</td><td>Gugus Fungsi (Functional Group)</td><td>Sekelompok atom spesifik dalam molekul yang bertanggung jawab atas karakteristik reaksi kimia molekul tersebut.</td></tr>
+                            <tr><td>58.</td><td>Alkohol (Alcohol)</td><td>Senyawa organik yang mengandung gugus hidroksil (-OH).</td></tr>
+                            <tr><td>59.</td><td>Eter (Ether)</td><td>Senyawa organik yang mengandung atom oksigen yang terikat pada dua gugus alkil atau aril (R-O-R').</td></tr>
+                            <tr><td>60.</td><td>Aldehida (Aldehyde)</td><td>Senyawa organik yang mengandung gugus karbonil (C=O) di mana atom karbon terikat setidaknya pada satu atom hidrogen.</td></tr>
+                            <tr><td>61.</td><td>Keton (Ketone)</td><td>Senyawa organik yang mengandung gugus karbonil (C=O) yang terikat pada dua gugus alkil atau aril.</td></tr>
+                            <tr><td>62.</td><td>Asam Karboksilat (Carboxylic Acid)</td><td>Senyawa organik yang mengandung gugus karboksil (-COOH).</td></tr>
+                            <tr><td>63.</td><td>Ester (Ester)</td><td>Senyawa organik turunan asam karboksilat di mana gugus -OH diganti dengan gugus -OR.</td></tr>
+                            <tr><td>64.</td><td>Amina (Amine)</td><td>Senyawa organik turunan amonia (NH<sub>3</sub>) di mana satu atau lebih atom hidrogen diganti dengan gugus alkil atau aril.</td></tr>
+                            <tr><td>65.</td><td>Isomer (Isomer)</td><td>Molekul-molekul yang memiliki rumus kimia yang sama tetapi susunan atom yang berbeda.</td></tr>
+                            <tr><td>66.</td><td>Stereoisomer (Stereoisomer)</td><td>Isomer yang memiliki konektivitas atom yang sama tetapi susunan spasial (tiga dimensi) yang berbeda.</td></tr>
+                            <tr><td>67.</td><td>Reaksi Substitusi (Substitution Reaction)</td><td>Reaksi di mana satu atom atau gugus fungsi digantikan oleh atom atau gugus fungsi lain.</td></tr>
+                            <tr><td>68.</td><td>Reaksi Adisi (Addition Reaction)</td><td>Reaksi di mana dua atau lebih molekul bergabung untuk membentuk satu molekul yang lebih besar (umum pada alkena dan alkuna).</td></tr>
+                            <tr><td>69.</td><td>Reaksi Eliminasi (Elimination Reaction)</td><td>Reaksi di mana sepasang atom atau gugus dilepaskan dari suatu molekul, biasanya membentuk ikatan rangkap.</td></tr>
+
+                            <tr class="category-header"><td colspan="3">🧬 Kategori 5: Biokimia</td></tr>
+                            <tr><td>70.</td><td>Biokimia (Biochemistry)</td><td>Studi tentang proses kimia di dalam dan yang berkaitan dengan organisme hidup.</td></tr>
+                            <tr><td>71.</td><td>Asam Amino (Amino Acid)</td><td>Molekul organik yang merupakan unit pembangun (monomer) dari protein.</td></tr>
+                            <tr><td>72.</td><td>Protein (Protein)</td><td>Polimer biologis besar (makromolekul) yang terdiri dari satu atau lebih rantai panjang asam amino.</td></tr>
+                            <tr><td>73.</td><td>Enzim (Enzyme)</td><td>Protein yang berfungsi sebagai katalis biologis, mempercepat reaksi kimia di dalam sel.</td></tr>
+                            <tr><td>74.</td><td>Situs Aktif (Active Site)</td><td>Wilayah spesifik pada enzim tempat substrat mengikat dan reaksi katalitik terjadi.</td></tr>
+                            <tr><td>75.</td><td>Karbohidrat (Carbohydrate)</td><td>Makromolekul biologis yang terdiri dari atom karbon (C), hidrogen (H), dan oksigen (O), biasanya dengan rasio 1:2:1 (misal: gula, pati).</td></tr>
+                            <tr><td>76.</td><td>Monosakarida (Monosaccharide)</td><td>Unit gula paling sederhana (misal: glukosa, fruktosa).</td></tr>
+                            <tr><td>77.</td><td>Lipid (Lipid)</td><td>Kelompok molekul biologis yang hidrofobik (tidak larut dalam air), termasuk lemak, minyak, dan fosfolipid.</td></tr>
+                            <tr><td>78.</td><td>Asam Nukleat (Nucleic Acid)</td><td>Makromolekul yang menyimpan informasi genetik (DNA dan RNA).</td></tr>
+                            <tr><td>79.</td><td>DNA (Deoxyribonucleic Acid)</td><td>Asam deoksiribonukleat; molekul yang membawa instruksi genetik untuk pertumbuhan, perkembangan, dan reproduksi.</td></tr>
+                            <tr><td>80.</td><td>RNA (Ribonucleic Acid)</td><td>Asam ribonukleat; molekul yang terlibat dalam sintesis protein dan regulasi gen.</td></tr>
+                            <tr><td>81.</td><td>Metabolisme (Metabolism)</td><td>Seluruh reaksi kimia yang terjadi di dalam organisme untuk mempertahankan kehidupan.</td></tr>
+                            <tr><td>82.</td><td>Glikolisis (Glycolysis)</td><td>Jalur metabolisme yang memecah glukosa menjadi piruvat, menghasilkan ATP dan NADH.</td></tr>
+                            <tr><td>83.</td><td>Siklus Krebs (Krebs Cycle)</td><td>(Juga Siklus Asam Sitrat) Rangkaian reaksi kimia di dalam mitokondria yang menghasilkan energi melalui oksidasi asetat.</td></tr>
+                            <tr><td>84.</td><td>Fotosintesis (Photosynthesis)</td><td>Proses yang digunakan oleh tumbuhan dan organisme lain untuk mengubah energi cahaya menjadi energi kimia.</td></tr>
+
+                            <tr class="category-header"><td colspan="3">📈 Kategori 6: Kimia Analitik & Teknik Laboratorium</td></tr>
+                            <tr><td>85.</td><td>Kimia Analitik (Analytical Chemistry)</td><td>Studi tentang pemisahan, identifikasi, dan kuantifikasi materi kimia.</td></tr>
+                            <tr><td>86.</td><td>Analisis Kualitatif (Qualitative Analysis)</td><td>Identifikasi komponen (unsur atau senyawa) yang ada dalam suatu sampel.</td></tr>
+                            <tr><td>87.</td><td>Analisis Kuantitatif (Quantitative Analysis)</td><td>Penentuan jumlah atau konsentrasi komponen dalam suatu sampel.</td></tr>
+                            <tr><td>88.</td><td>Titrasi (Titration)</td><td>Metode laboratorium kuantitatif untuk menentukan konsentrasi analit dengan mereaksikannya dengan larutan standar (titran).</td></tr>
+                            <tr><td>89.</td><td>Titik Ekuivalen (Equivalence Point)</td><td>Titik dalam titrasi di mana jumlah titran yang ditambahkan secara stokiometri setara dengan jumlah analit.</td></tr>
+                            <tr><td>90.</td><td>Titik Akhir (End Point)</td><td>Titik dalam titrasi di mana indikator berubah warna, yang seharusnya sangat dekat dengan titik ekuivalen.</td></tr>
+                            <tr><td>91.</td><td>Indikator (Indicator)</td><td>Zat kimia yang mengalami perubahan visual (misal: warna) sebagai respons terhadap perubahan kondisi kimia (misal: pH).</td></tr>
+                            <tr><td>92.</td><td>Spektroskopi (Spectroscopy)</td><td>Studi tentang interaksi antara materi dan radiasi elektromagnetik.</td></tr>
+                            <tr><td>93.</td><td>Spektroskopi UV-Vis (UV-Vis Spectroscopy)</td><td>Teknik yang mengukur penyerapan radiasi ultraviolet atau tampak oleh suatu zat.</td></tr>
+                            <tr><td>94.</td><td>Spektroskopi Inframerah (Infrared Spectroscopy, IR)</td><td>Teknik yang menggunakan radiasi inframerah untuk mengidentifikasi gugus fungsi dalam suatu molekul.</td></tr>
+                            <tr><td>95.</td><td>NMR (Nuclear Magnetic Resonance Spectroscopy)</td><td>Teknik spektroskopi yang digunakan untuk menentukan struktur molekul berdasarkan interaksi inti atom dengan medan magnet.</td></tr>
+                            <tr><td>96.</td><td>Spektrometri Massa (Mass Spectrometry, MS)</td><td>Teknik analitik yang mengukur rasio massa terhadap muatan (m/z) dari ion, digunakan untuk menentukan massa molekul dan struktur.</td></tr>
+                            <tr><td>97.</td><td>Kromatografi (Chromatography)</td><td>Teknik pemisahan di mana komponen campuran didistribusikan antara dua fasa (fasa diam dan fasa gerak).</td></tr>
+                            <tr><td>98.</td><td>Kromatografi Gas (Gas Chromatography, GC)</td><td>Teknik kromatografi di mana fasa gerak adalah gas.</td></tr>
+                            <tr><td>99.</td><td>HPLC (High-Performance Liquid Chromatography)</td><td>Teknik kromatografi berkinerja tinggi di mana fasa gerak adalah cairan yang dipompa di bawah tekanan tinggi.</td></tr>
+                            <tr><td>100.</td><td>Gravimetri (Gravimetry)</td><td>Metode analisis kuantitatif berdasarkan penimbangan massa suatu endapan padat.</td></tr>
+                            <tr><td>101.</td><td>Presipitasi (Precipitation)</td><td>Proses pembentukan zat padat (endapan) dari dalam larutan.</td></tr>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="app-footer">
+            prototype website ini dibuat oleh seorang mahasiswi kimia FMIPA UNTAD :)
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
