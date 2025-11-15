@@ -155,16 +155,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('login-error');
 
-    // Navigasi & Tampilan
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
+    // ▼▼▼ DIMODIFIKASI: Navigasi & Tampilan ▼▼▼
     const mainContent = document.getElementById('main-content');
+    const menuButton = document.getElementById('menu-button');
+    const menuDropdown = document.getElementById('menu-dropdown');
+    // ▲▲▲ DIMODIFIKASI ▲▲▲
     
-    // Tombol Navigasi
+    // Tombol Navigasi (diambil dari ID)
     const navHome = document.getElementById('nav-home');
     const navNotes = document.getElementById('nav-notes');
     const navFunFact = document.getElementById('nav-fun-fact');
     const navGlossary = document.getElementById('nav-glossary'); 
+    const navSaran = document.getElementById('nav-saran'); // <-- BARU
     const navLogout = document.getElementById('nav-logout');
 
     // Tampilan Konten (Views)
@@ -176,12 +178,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const funFactListView = document.getElementById('fun-fact-list-view');
     const funFactDetailView = document.getElementById('fun-fact-detail-view');
     const glossaryView = document.getElementById('glossary-view'); 
-    const hybridizationView = document.getElementById('hybridization-view'); // <-- BARU
+    const hybridizationView = document.getElementById('hybridization-view');
+    const saranView = document.getElementById('saran-view'); // <-- BARU
 
     // Link di dalam konten
     const linkGrignard = document.getElementById('link-grignard');
     const linkPh = document.getElementById('link-ph');
-    const linkHybrid = document.getElementById('link-hybrid'); // <-- BARU
+    const linkHybrid = document.getElementById('link-hybrid'); 
     const backButtons = document.querySelectorAll('.btn-back');
 
     // Kontainer Dinamis Fun Fact
@@ -189,11 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const funFactDetailHeader = document.getElementById('fun-fact-detail-header');
     const funFactDetailContent = document.getElementById('fun-fact-detail-content');
 
-    // ▼▼▼ BARU: Selektor Modal Logout ▼▼▼
+    // Selektor Modal Logout
     const logoutModal = document.getElementById('logout-modal');
     const logoutConfirmYes = document.getElementById('logout-confirm-yes');
     const logoutConfirmNo = document.getElementById('logout-confirm-no');
-    // ▲▲▲ BARU ▲▲▲
 
     
     // === BAGIAN 3: FUNGSI ===
@@ -211,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
             viewToShow.classList.remove('hidden');
         }
 
-        sidebar.classList.remove('open');
+        menuDropdown.classList.add('hidden'); // <-- BARU: Tutup menu saat pindah view
         mainContent.scrollTop = 0;
         window.scrollTo(0, 0);
     }
@@ -257,11 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
         usernameInput.value = '';
         passwordInput.value = '';
         loginError.textContent = '';
-        sidebar.classList.remove('open');
+        // Tidak perlu tutup sidebar lagi
     }
 
     /**
-     * Fungsi untuk membuat Skala pH Interaktif (Sudah dimodifikasi)
+     * Fungsi untuk membuat Skala pH Interaktif
      */
     function generatePhScale() {
         const container = document.getElementById('ph-scale-container');
@@ -269,7 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         container.innerHTML = ''; 
 
-        // Data 't' (text color) sudah dihapus
         const phData = [
             { p: 0, c: '#d00000', ex: 'Asam Baterai' },
             { p: 1, c: '#e85d04', ex: 'Asam Lambung' },
@@ -343,11 +344,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // === BAGIAN 4: EVENT LISTENERS ===
     
     loginForm.addEventListener('submit', handleLogin);
-    menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
+
+    // ▼▼▼ LOGIKA MENU DROPDOWN BARU ▼▼▼
+    menuButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // Mencegah klik terdeteksi oleh document
+        menuDropdown.classList.toggle('hidden');
     });
 
-    // Navigasi Sidebar
+    // Menutup dropdown jika klik di luar
+    document.addEventListener('click', (e) => {
+        if (!menuButton.contains(e.target) && !menuDropdown.contains(e.target)) {
+            menuDropdown.classList.add('hidden');
+        }
+    });
+    // ▲▲▲ LOGIKA MENU DROPDOWN BARU ▲▲▲
+
+    // Navigasi (dari dalam dropdown)
     navHome.addEventListener('click', (e) => {
         e.preventDefault(); 
         showView('home-view');
@@ -368,23 +380,27 @@ document.addEventListener('DOMContentLoaded', () => {
         showView('glossary-view');
     });
 
-    // ▼▼▼ DIMODIFIKASI: Event listener Logout ▼▼▼
+    // Navigasi (dari top-bar)
+    navSaran.addEventListener('click', (e) => {
+        e.preventDefault();
+        showView('saran-view');
+    });
+
     navLogout.addEventListener('click', (e) => {
         e.preventDefault();
+        menuDropdown.classList.add('hidden'); // Tutup menu jika terbuka
         logoutModal.classList.remove('hidden'); // Tampilkan modal
     });
-    // ▲▲▲ DIMODIFIKASI ▲▲▲
 
-    // ▼▼▼ BARU: Event listener untuk tombol Modal Logout ▼▼▼
+    // Event listener Modal Logout
     logoutConfirmYes.addEventListener('click', () => {
-        handleLogout(); // Panggil fungsi logout yang sebenarnya
-        logoutModal.classList.add('hidden'); // Sembunyikan modal
+        handleLogout(); 
+        logoutModal.classList.add('hidden'); 
     });
 
     logoutConfirmNo.addEventListener('click', () => {
-        logoutModal.classList.add('hidden'); // Cukup sembunyikan modal
+        logoutModal.classList.add('hidden'); 
     });
-    // ▲▲▲ BARU ▲▲▲
 
     // Navigasi Konten
     linkGrignard.addEventListener('click', (e) => {
@@ -397,12 +413,10 @@ document.addEventListener('DOMContentLoaded', () => {
         showView('ph-view');
     });
 
-    // ▼▼▼ BARU: Event listener untuk Hibridisasi ▼▼▼
     linkHybrid.addEventListener('click', (e) => {
         e.preventDefault();
         showView('hybridization-view');
     });
-    // ▲▲▲ BARU ▲▲▲
 
     backButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -412,6 +426,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    
+    // Mencegah submit form bawaan (kecuali form saran)
+    const saranForm = document.getElementById('saran-form');
+    saranForm.addEventListener('submit', (e) => {
+        // Kita TIDAK mencegah default di sini, agar form bisa dikirim ke Formspree
+        // Tapi kita bisa tambahkan pesan "terkirim"
+        setTimeout(() => {
+            alert("Saran Anda telah dikirim! Terima kasih.");
+            showView('home-view'); // Kembali ke home setelah kirim
+        }, 1000); // Beri jeda 1 detik agar form sempat terkirim
+    });
+
 
     // === BAGIAN 5: INISIALISASI ===
     
