@@ -32,22 +32,22 @@
 
     <div id="app-page" class="page hidden">
         
-        <button id="menu-toggle" class="menu-toggle">
-            &#9776; </button>
-
-        <nav id="sidebar" class="sidebar">
-            <div class="sidebar-header">
-                <h3>Menu</h3>
+        <header class="top-bar">
+            <div class="menu-container">
+                <button id="menu-button" class="btn-top-bar">Menu</button>
+                <nav id="menu-dropdown" class="menu-dropdown hidden">
+                    <ul>
+                        <li><a href="#" id="nav-home">Home</a></li>
+                        <li><a href="#" id="nav-notes">Chemistry Notes</a></li>
+                        <li><a href="#" id="nav-fun-fact">Fun-Fact!</a></li>
+                        <li><a href="#" id="nav-glossary">Istilah Kimia</a></li>
+                    </ul>
+                </nav>
             </div>
-            <ul>
-                <li><a href="#" id="nav-home">Home</a></li>
-                <li><a href="#" id="nav-notes">Chemistry Notes</a></li>
-                <li><a href="#" id="nav-fun-fact">Fun-Fact!</a></li>
-                <li><a href="#" id="nav-glossary">Istilah Kimia</a></li>
-                <li><a href="#" id="nav-logout">Logout</a></li>
-            </ul>
-        </nav>
-
+            
+            <button id="nav-saran" class="btn-top-bar">Kotak Saran!</button>
+            <button id="nav-logout" class="btn-top-bar btn-logout">Logout</button>
+        </header>
         <main id="main-content" class="main-content">
             
             <div id="home-view" class="view">
@@ -82,7 +82,7 @@
                             <h4>Kimia Dasar</h4>
                             <a href="#" id="link-ph" class="note-link">Skala pH Interaktif</a>
                             <a href="#" id="link-hybrid" class="note-link">Hibridisasi Orbital</a>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     </ul>
                     <p>Senyawa ini disebut reaktan Grignard dan ditemukan oleh Victor Grignard (1900) yang mendapatkan Hadiah Nobel Kimia (1912).</p>
                     
-                    <h3⚙️ 2. Prinsip Dasar dan Pembuatan Senyawa Grignard</h3>
+                    <h3>⚙️ 2. Prinsip Dasar dan Pembuatan Senyawa Grignard</h3>
                     <p>Senyawa Grignard disintesis dengan mereaksikan alkil atau aril halida dengan logam magnesium dalam pelarut eter anhidrat (etanol kering), misalnya dietil eter atau tetrahidrofuran (THF).</p>
                     <p><b>Reaksi pembentukan:</b></p>
                     <p><code>R–X + Mg → (Et₂O atau THF anhidrat) → R–Mg–X</code></p>
@@ -350,7 +350,7 @@
                             <tr><td>62.</td><td>Asam Karboksilat (Carboxylic Acid)</td><td>Senyawa organik yang mengandung gugus karboksil (-COOH).</td></tr>
                             <tr><td>63.</td><td>Ester (Ester)</td><td>Senyawa organik turunan asam karboksilat di mana gugus -OH diganti dengan gugus -OR.</td></tr>
                             <tr><td>64.</td><td>Amina (Amine)</td><td>Senyawa organik turunan amonia (NH<sub>3</sub>) di mana satu atau lebih atom hidrogen diganti dengan gugus alkil atau aril.</td></tr>
-                            <tr><td>65.</td><td>Isomer (Isomer)</td><td>Molekul-molekul yang memiliki rumus kimia yang sama tetapi susunan atom yang berbeda.</td></tr>
+                            <tr><td>6S.</td><td>Isomer (Isomer)</td><td>Molekul-molekul yang memiliki rumus kimia yang sama tetapi susunan atom yang berbeda.</td></tr>
                             <tr><td>66.</td><td>Stereoisomer (Stereoisomer)</td><td>Isomer yang memiliki konektivitas atom yang sama tetapi susunan spasial (tiga dimensi) yang berbeda.</td></tr>
                             <tr><td>67.</td><td>Reaksi Substitusi (Substitution Reaction)</td><td>Reaksi di mana satu atom atau gugus fungsi digantikan oleh atom atau gugus fungsi lain.</td></tr>
                             <tr><td>68.</td><td>Reaksi Adisi (Addition Reaction)</td><td>Reaksi di mana dua atau lebih molekul bergabung untuk membentuk satu molekul yang lebih besar (umum pada alkena dan alkuna).</td></tr>
@@ -494,7 +494,28 @@
                     </div>
                 </div>
             </div>
-            </main>
+
+            <div id="saran-view" class="view hidden">
+                <h2>Kotak Saran</h2>
+                <p>Kami sangat menghargai masukan Anda untuk membuat website ini lebih baik!</p>
+                
+                <div class="saran-container">
+                    <form id="saran-form" action="https://formspree.io/f/mzzygdge" method="POST">
+                        <div class="form-group-saran">
+                            <label for="saran-nama">Nama Anda:</label>
+                            <input type="text" id="saran-nama" name="Nama" required>
+                        </div>
+                        <div class="form-group-saran">
+                            <label for="saran-pesan">Saran Anda:</label>
+                            <textarea id="saran-pesan" name="Saran" rows="8" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Saran</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </main>
 
         <footer class="app-footer">
             prototype website ini dibuat oleh seorang mahasiswi kimia FMIPA UNTAD :)
@@ -512,7 +533,7 @@
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
-
 </html>
