@@ -427,17 +427,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Mencegah submit form bawaan (kecuali form saran)
+// Menangani pengiriman form saran DENGAN AJAX (tanpa pindah halaman)
     const saranForm = document.getElementById('saran-form');
-    saranForm.addEventListener('submit', (e) => {
-        // Kita TIDAK mencegah default di sini, agar form bisa dikirim ke Formspree
-        // Tapi kita bisa tambahkan pesan "terkirim"
-        setTimeout(() => {
-            alert("Saran Anda telah dikirim! Terima kasih.");
-            showView('home-view'); // Kembali ke home setelah kirim
-        }, 1000); // Beri jeda 1 detik agar form sempat terkirim
-    });
+    saranForm.addEventListener('submit', (event) => {
+        
+        event.preventDefault(); // INI KUNCINYA: Mencegah pindah halaman
+        
+        // Ambil data dari form
+        const formData = new FormData(saranForm);
+        
+        // Tampilkan pesan "loading" sederhana
+        const submitButton = saranForm.querySelector('button[type="submit"]');
+        submitButton.textContent = 'Mengirim...';
+        submitButton.disabled = true;
 
+        // Kirim data ke Formspree menggunakan fetch
+        fetch(saranForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json' // Ini memberitahu Formspree untuk tidak mengalihkan
+            }
+        }).then(response => {
+            // Setelah selesai, baik berhasil atau gagal
+            submitButton.textContent = 'Kirim Saran';
+            submitButton.disabled = false;
+
+            if (response.ok) {
+                // Berhasil dikirim
+                alert("Saran Anda telah dikirim! Terima kasih.");
+                saranForm.reset(); // Mengosongkan kolom form
+                showView('home-view'); // Pindah ke halaman home
+            } else {
+                // Gagal di server Formspree
+                alert("Oops! Terjadi kesalahan saat mengirim saran. Coba lagi nanti.");
+            }
+        }).catch(error => {
+            // Gagal di jaringan (misal: internet mati)
+            submitButton.textContent = 'Kirim Saran';
+            submitButton.disabled = false;
+            console.error('Error:', error);
+            alert("Oops! Terjadi kesalahan jaringan. Periksa koneksi Anda.");
+        });
+    });
 
     // === BAGIAN 5: INISIALISASI ===
     
@@ -445,3 +477,4 @@ document.addEventListener('DOMContentLoaded', () => {
     generateFunFactCards(); 
 
 });
+
